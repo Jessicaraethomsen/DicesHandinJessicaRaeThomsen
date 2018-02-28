@@ -7,8 +7,7 @@
 <script type="text/javascript">
 	
 	
-	<!--Dice-->
-
+	
 class Dice{
 		constructor(name, rollresult){ //here we are passing name of the dice
 				this.name = name;  // constructor 
@@ -25,7 +24,7 @@ class Dice{
 
 		console.log(this.name);
 		console.log(this.rollresult);
-				console.log(this.rollresult2);
+		console.log(this.rollresult2);
 
 
 		}
@@ -34,12 +33,13 @@ class Dice{
 	
 }
 
-<!--PLAYER-->
+	
+	
 	
 	class Player extends Dice{
-			constructor(type){
+			constructor(type, rollresult, rollresult2){
 				//refrening to the super class "Rocket"
-				super(name);  //super calls the constructor of the base clases
+				super(name, rollresult, rollresult2);  //super calls the constructor of the base clases
 				//additional class property
 				this.type = type;
 				
@@ -53,7 +53,13 @@ class Dice{
 			super.RollDice();
 			console.log('Player: '+ this.type);
 		}
-				
+		
+
+		addResult(rollresult, rollresult2){
+			var result = this.rollresult + this.rollresult2;
+			console.log('Result: '+ result);
+		}
+
 	
 	}
 	
@@ -63,13 +69,13 @@ class Dice{
 	
 var Human = new Player("Human");
 		Human.RollDice();
-		Human.Result;
+		Human.addResult();
 	
 var Computer = new Player("Computer");
 		Computer.RollDice();
-		Computer.Result;
+		Computer.addResult();
 
-	
+
 			
 	
 	
