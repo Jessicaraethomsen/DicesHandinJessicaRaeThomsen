@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hot Dices</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script type="text/javascript">
+	
+	
+	
+class Dice {
+		constructor(name){ //here we are passing a desc and a engines.
+				this.name = name;  //player or computer		
+		}
+	
+	RollDice(){
+		
+			console.log('Dice: '+ this.name);
+		}
+
+}
+//Objects
+	
+	
+	var d1 = new Dice("Dice1");
+		d1.RollDice();
+	
+	var d2 = new Dice("Dice2");
+		d2.RollDice();
+	
+	var d3 = new Dice("Dice3");
+		d2.RollDice();
+	
+	
+	var d4 = new Dice("Dice4");
+		d2.RollDice();
+	
+	</script>
+</head>
+
+<body>
+
+<!--HEADLINE-->
+
+<container>
+<row>
+<div class="col-lg-10 text-center">
+<h1>Dice Rolling Game</h1>
+<h2>Roll your dices and see if you can beat the computer.</h2>
+<!--Onclick allow us to call the function-->
+</div>
+</row>
+</container>
+
+
+<!--Computer Dice and Score-->
+
+<container>
+<row>
+<div class="col-lg-6">
+<h3>Computers Score</h3>
+<div id="die1" class="dices">-</div>
+<div id="die2" class="dices">-</div>
+
+<h2 id="computerscore"></h2>
+	</div>
+
+
+<!--Player Dice and Score-->
+
+<div class="col-lg-6">
+<h3>Player Score:</h3>
+<div id="die3" class="dices">-</div>
+<div id="die4" class="dices">-</div>
+
+<h2 id="playersscore"></h2>
+</div>
+</row>
+</container>
+
+
+<!--Buttons-->
+
+
+<container>
+<row>
+<div class="col-lg-12">
+
+<div id="button" class="button">Roll the Dice!</div>
+<div id="buttonRestart" class="buttonRestart">Restart</div>
+
+<h2 id="Results & Score"></h2>
+
+	</div>
+</row>
+</container>
+
+
+</body>
+</html>
