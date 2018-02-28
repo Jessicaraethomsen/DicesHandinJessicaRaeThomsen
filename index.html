@@ -7,33 +7,71 @@
 <script type="text/javascript">
 	
 	
-	
-class Dice {
-		constructor(name){ //here we are passing a desc and a engines.
-				this.name = name;  //player or computer		
+	<!--Dice-->
+
+class Dice{
+		constructor(name, rollresult){ //here we are passing name of the dice
+				this.name = name;  // constructor 
+				this.rollresult = 0;
+				this.rollresult2 = 0;
+
 		}
+	
 	
 	RollDice(){
-		
-			console.log('Dice: '+ this.name);
+		//funcion to rolle the dice.
+		this.rollresult = Math.floor(Math.random() * 6) + 1;
+		this.rollresult2 = Math.floor(Math.random() * 6) + 1;
+
+		console.log(this.name);
+		console.log(this.rollresult);
+				console.log(this.rollresult2);
+
+
 		}
 
+	
+	
 }
+
+<!--PLAYER-->
+	
+	class Player extends Dice{
+			constructor(type){
+				//refrening to the super class "Rocket"
+				super(name);  //super calls the constructor of the base clases
+				//additional class property
+				this.type = type;
+				
+			}
+
+		
+				//Overridding the super class method
+
+		RollDice(){
+			//keeping the functionality of the superclass
+			super.RollDice();
+			console.log('Player: '+ this.type);
+		}
+				
+	
+	}
+	
 //Objects
 	
+			
 	
-	var d1 = new Dice("Dice1");
-		d1.RollDice();
+var Human = new Player("Human");
+		Human.RollDice();
+		Human.Result;
 	
-	var d2 = new Dice("Dice2");
-		d2.RollDice();
+var Computer = new Player("Computer");
+		Computer.RollDice();
+		Computer.Result;
+
 	
-	var d3 = new Dice("Dice3");
-		d2.RollDice();
+			
 	
-	
-	var d4 = new Dice("Dice4");
-		d2.RollDice();
 	
 	</script>
 </head>
