@@ -6,35 +6,27 @@
 <link rel="stylesheet" type="text/css" href="styles.css">
 <script type="text/javascript">
 	
-	
+		
 	
 class Dice{
-		constructor(name, rollresult){ //here we are passing name of the dice
-				this.name = name;  // constructor 
+		constructor(rollresult){ //here we are passing name of the dice
 				this.rollresult = 0;
 				this.rollresult2 = 0;
-
 		}
 	
 	
-	RollDice(){
+	rollDice(){
 		//funcion to rolle the dice.
 		this.rollresult = Math.floor(Math.random() * 6) + 1;
 		this.rollresult2 = Math.floor(Math.random() * 6) + 1;
 
-		console.log(this.name);
 		console.log(this.rollresult);
 		console.log(this.rollresult2);
 
 
 		}
 
-	
-	
 }
-
-	
-	
 	
 	class Player extends Dice{
 			constructor(type, rollresult, rollresult2){
@@ -48,37 +40,53 @@ class Dice{
 		
 				//Overridding the super class method
 
-		RollDice(){
+		rollDice(){
 			//keeping the functionality of the superclass
-			super.RollDice();
-			console.log('Player: '+ this.type);
+			super.rollDice();
+			console.log('Player: '+ this.type); 	
 		}
 		
-
-		addResult(rollresult, rollresult2){
-			var result = this.rollresult + this.rollresult2;
-			console.log('Result: '+ result);
-		}
-
-	
+		
+		addResult(){
+		var result = this.rollresult + this.rollresult2;
+		console.log(result);
+		
 	}
+		
+
+
+		}
 	
-//Objects
-	
-			
 	
 var Human = new Player("Human");
-		Human.RollDice();
+		Human.rollDice();
 		Human.addResult();
 	
+		
+		
+	
 var Computer = new Player("Computer");
-		Computer.RollDice();
+		Computer.rollDice();
 		Computer.addResult();
 
+	
 
-			
+function compare(Human, Computer){	
+	if( Human.addResult == Computer.addResult){
+					console.log(result + 'you tie');
+
+		 } else if(Human.addResult > Computer.addResult){
+					console.log(result +'you won');
+
+		} else if(Human.addResult < Computer.addResult){
+					console.log(result +'you lose');
+				}	
+
+		}
 	
 	
+		
+
 	</script>
 </head>
 
@@ -87,58 +95,47 @@ var Computer = new Player("Computer");
 <!--HEADLINE-->
 
 <container>
-<row>
-<div class="col-lg-10 text-center">
-<h1>Dice Rolling Game</h1>
-<h2>Roll your dices and see if you can beat the computer.</h2>
-<!--Onclick allow us to call the function-->
-</div>
-</row>
+  <row>
+    <div class="col-lg-10 text-center">
+      <h1>Dice Rolling Game</h1>
+      <h2>Roll your dices and see if you can beat the computer.</h2>
+      <!--Onclick allow us to call the function--> 
+    </div>
+  </row>
 </container>
-
 
 <!--Computer Dice and Score-->
 
 <container>
-<row>
-<div class="col-lg-6">
-<h3>Computers Score</h3>
-<div id="die1" class="dices">-</div>
-<div id="die2" class="dices">-</div>
-
-<h2 id="computerscore"></h2>
-	</div>
-
-
-<!--Player Dice and Score-->
-
-<div class="col-lg-6">
-<h3>Player Score:</h3>
-<div id="die3" class="dices">-</div>
-<div id="die4" class="dices">-</div>
-
-<h2 id="playersscore"></h2>
-</div>
-</row>
+  <row>
+    <div class="col-lg-6">
+      <h3>Computers Score</h3>
+      <div id="die1" class="dices">-</div>
+      <div id="die2" class="dices">-</div>
+      <h2 id="computerscore"></h2>
+    </div>
+    
+    <!--Player Dice and Score-->
+    
+    <div class="col-lg-6">
+      <h3>Player Score:</h3>
+      <div id="die3" class="dices">-</div>
+      <div id="die4" class="dices">-</div>
+      <h2 id="playersscore"></h2>
+    </div>
+  </row>
 </container>
-
 
 <!--Buttons-->
 
-
 <container>
-<row>
-<div class="col-lg-12">
-
-<div id="button" class="button">Roll the Dice!</div>
-<div id="buttonRestart" class="buttonRestart">Restart</div>
-
-<h2 id="Results & Score"></h2>
-
-	</div>
-</row>
+  <row>
+    <div class="col-lg-12">
+      <div id="button" class="button">Roll the Dice!</div>
+      <div id="buttonRestart" class="buttonRestart">Restart</div>
+      <h2 id="resultScore"></h2>
+    </div>
+  </row>
 </container>
-
-
 </body>
 </html>
