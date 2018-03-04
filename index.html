@@ -4,9 +4,73 @@
 <meta charset="utf-8">
 <title>Hot Dices</title>
 <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+
+<body>
+
+<!--HEADLINE-->
+
+<container>
+  <row>
+    <div class="col-lg-10 text-center">
+      <h1>Dice Rolling Game</h1>
+      <h2>Roll your dices and see if you can beat the computer.</h2>
+      <!--Onclick allow us to call the function--> 
+    </div>
+  </row>
+</container>
+
+<!--Computer Dice and Score-->
+
+<container>
+  <row>
+    <div class="col-lg-6">
+      <h3>Computers Score</h3>
+      <div id="die1" class="dices">-</div>
+       <div id="die2" class="dices">-</div>
+
+      <h2 id="computerscore"></h2>
+    </div>
+    
+    <!--Player Dice and Score-->
+    
+    <div class="col-lg-6">
+      <h3>Player Score:</h3>
+      <div id="die3" class="dices">-</div>
+      <div id="die4" class="dices">-</div>
+
+      <h2 id="playerscore"></h2>
+    </div>
+  </row>
+</container>
+
+<!--Buttons-->
+
+<container>
+  <row>
+    <div class="col-lg-12">
+      <div id="button" class="button">Roll the Dice!</div>
+      <h2 id="resultScore">Result</h2>
+    </div>
+  </row>
+</container>
+
+
 <script type="text/javascript">
 	
-		
+	
+	var message = document.getElementById("resultScore"); // display the game result
+	var playerscore = document.getElementById("playerscore"); // display the game result
+	var computerscore = document.getElementById("computerscore"); // display the game result
+	var d1 = document.getElementById("die1");
+	var d2 = document.getElementById("die2");
+	var d3 = document.getElementById("die3");
+	var d4 = document.getElementById("die4");
+	
+	
+	//DICES & PLAYER CLASS:
+
 	
 class Dice{
 		constructor(rollresult, rollresult2){ //here we are passing name of the dice
@@ -29,6 +93,14 @@ class Dice{
 	
 		get score(){
 			return  this.rollresult + this.rollresult2;
+		}
+	
+		get roll1(){
+		 return this.rollresult;
+		}
+		
+		get roll2(){
+			return this.rollresult2;
 		}
 		
 }
@@ -53,7 +125,7 @@ class Dice{
 
 		}
 
-	
+//Instantizing my Objects
 var Human = new Player("Human");
 		Human.rollDice();
 		//Human.addResult();
@@ -65,78 +137,60 @@ var Computer = new Player("Computer");
 		//Computer.addResult();
 	    console.log(Computer.score); //here is getter
 
-		var s2 = Human.score;
-		var s1 = Computer.score;
+		
+	
+//Global Variables
+	
+	var s2 = Human.score;
+	var s1 = Computer.score;
+	var die1 = Human.roll1;
+	var die2 = Human.roll2;
+	var die3 = Computer.roll1;
+	var die4 = Computer.roll2;
+
+
+	 //testing output itworked!
+	console.log('Score: '+ s1 +' Testing ' + s2);
+	console.log('Human: '+ die1 +' Testing ' + die2);
+	console.log('Computer: '+ die3 +' Testing ' + die4);
 
 	
 	
+	function display(Human, Computer) {
+		//give user feedback to the user...  give the displays the information.
+		computerscore.innerHTML = 'You roll total: ' + s1;
+		playerscore.innerHTML = 'Your roll total: ' + s2;
+		d1.innerHTML = 'Die 1: ' + die1;
+		d2.innerHTML = 'Die 2: ' + die2;
+		d3.innerHTML = 'Die 3: ' + die3;
+		d4.innerHTML = 'Die 4: ' + die4;
 
+		};
 	
-function compare(Human, Computer){	
-	if(s2 === s1){
-				console.log( 'you tie');
+	
+
+	function compare(Human, Computer){	
+		if(s2 === s1){
+        message.innerHTML = "<span style='color:#4949ea'> EWWW A DRAW! </span>";
 
 		 } else if(s2 > s1){
-					console.log('you won');
+		 message.innerHTML = "<span style='color:#Ea4977'> YOU SADLY LOST </span>";
 
 		} else if(s2 < s1){
-					console.log( 'you lose');
+        message.innerHTML = "<span style='color:#0BB56E'> YOUR A WINNER, BABY </span>";
 				}	
-			}
+			};
+
 	
 
-	console.log(compare());
+	compare();
+	display();
+
+
+
 		
+	
 
 	</script>
-</head>
-
-<body>
-
-<!--HEADLINE-->
-
-<container>
-  <row>
-    <div class="col-lg-10 text-center">
-      <h1>Dice Rolling Game</h1>
-      <h2>Roll your dices and see if you can beat the computer.</h2>
-      <!--Onclick allow us to call the function--> 
-    </div>
-  </row>
-</container>
-
-<!--Computer Dice and Score-->
-
-<container>
-  <row>
-    <div class="col-lg-6">
-      <h3>Computers Score</h3>
-      <div id="die1" class="dices">-</div>
-      <div id="die2" class="dices">-</div>
-      <h2 id="computerscore"></h2>
-    </div>
-    
-    <!--Player Dice and Score-->
-    
-    <div class="col-lg-6">
-      <h3>Player Score:</h3>
-      <div id="die3" class="dices">-</div>
-      <div id="die4" class="dices">-</div>
-      <h2 id="playersscore"></h2>
-    </div>
-  </row>
-</container>
-
-<!--Buttons-->
-
-<container>
-  <row>
-    <div class="col-lg-12">
-      <div id="button" class="button">Roll the Dice!</div>
-      <div id="buttonRestart" class="buttonRestart">Restart</div>
-      <h2 id="resultScore"></h2>
-    </div>
-  </row>
-</container>
 </body>
 </html>
