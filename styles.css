@@ -1,3 +1,44 @@
 @charset "utf-8";
 /* CSS Document */
 
+
+body{
+	background:#F5F5F5;
+	margin-left: 50px;
+}
+
+.button{
+background: #0395FF;
+color: #fff;	
+border-style: none;
+border-radius: 6px;	
+width: 150px;
+height:36px;
+text-align: center;
+padding-top: 7px;
+
+}
+
+div.dices{
+	
+	float: left;
+	width: 45px;
+	height: 45px;
+	padding: 5px;
+	background:#fff;
+	border-radius: 10px;
+	font-size: 30px;
+	font-weight: 700;
+	text-align: center;
+	margin: 10px;
+	
+}
+
+.margin-tb-30{
+	margin-top: 30px;
+	margin-bottom:  30px;
+}
+
+.border{
+	border: #F5F5F5 1px solid;
+}
