@@ -9,7 +9,7 @@
 		
 	
 class Dice{
-		constructor(rollresult){ //here we are passing name of the dice
+		constructor(rollresult, rollresult2){ //here we are passing name of the dice
 				this.rollresult = 0;
 				this.rollresult2 = 0;
 		}
@@ -26,6 +26,11 @@ class Dice{
 
 		}
 
+	
+		get score(){
+			return  this.rollresult + this.rollresult2;
+		}
+		
 }
 	
 	class Player extends Dice{
@@ -45,46 +50,42 @@ class Dice{
 			super.rollDice();
 			console.log('Player: '+ this.type); 	
 		}
-		
-		
-		addResult(){
-		var result = this.rollresult + this.rollresult2;
-		console.log(result);
-		
-	}
-		
-
 
 		}
-	
+
 	
 var Human = new Player("Human");
 		Human.rollDice();
-		Human.addResult();
-	
-		
-		
+		//Human.addResult();
+	    console.log(Human.score); //here is getter
+
 	
 var Computer = new Player("Computer");
 		Computer.rollDice();
-		Computer.addResult();
+		//Computer.addResult();
+	    console.log(Computer.score); //here is getter
+
+		var s2 = Human.score;
+		var s1 = Computer.score;
 
 	
+	
 
+	
 function compare(Human, Computer){	
-	if( Human.addResult == Computer.addResult){
-					console.log(result + 'you tie');
+	if(s2 === s1){
+				console.log( 'you tie');
 
-		 } else if(Human.addResult > Computer.addResult){
-					console.log(result +'you won');
+		 } else if(s2 > s1){
+					console.log('you won');
 
-		} else if(Human.addResult < Computer.addResult){
-					console.log(result +'you lose');
+		} else if(s2 < s1){
+					console.log( 'you lose');
 				}	
+			}
+	
 
-		}
-	
-	
+	console.log(compare());
 		
 
 	</script>
