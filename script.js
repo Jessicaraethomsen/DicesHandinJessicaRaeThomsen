@@ -1,5 +1,16 @@
 
-   
+
+
+function newplayername() {
+	'use strict';
+    var name = prompt('What is your name?', '');
+    if (name) {
+        document.getElementById("player").innerHTML = name;
+    }
+};
+
+newplayername();
+	
     var message = document.getElementById("resultScore"); // display the game result
 	var playerscore = document.getElementById("playerscore"); // display the game result
 	var computerscore = document.getElementById("computerscore"); // display the game result
@@ -92,7 +103,7 @@
 		
 		//add the score
 		playerscore.innerHTML = 'Total: '  + Human.score;
-	    computerscore.innerHTML= 'Total: ' + Human.score;
+	    computerscore.innerHTML= 'Total: ' + Computer.score;
 	
 		
 		//I KNOW THIS IS UGLY... the compare() refused to  work
