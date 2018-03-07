@@ -3,7 +3,7 @@
 
 
 body{
-	background:#F5F5F5;
+	background:#ebebeb;
 	margin-left: 50px;
 }
 
@@ -40,5 +40,5 @@ div.dices{
 }
 
 .border{
-	border: #F5F5F5 1px solid;
+	border: #EBEBEB 1px solid;
 }
