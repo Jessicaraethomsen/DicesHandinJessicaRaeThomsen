@@ -1,21 +1,27 @@
+ 
 
-
-
-function newplayername() {
+function greet(){
 	'use strict';
-    var name = prompt('What is your name?', '');
-    if (name) {
-        document.getElementById("player").innerHTML = name;
-    }
-};
+    var name = localStorage.getItem("name");
+    if (name === null || name === "null"){
+     alert("READY FOR A NEW GAME!!!");
+     name = prompt("What is your name?", '');
+      localStorage.setItem("name", name);
+      alert("Thanks, "+ name + "...Click Okay to ROLL!!!");
+      console.log(name);
+    } else {
+     document.getElementById("player").innerHTML = name;
+    } // end greet
+  } // end function  
 
-newplayername();
-	
+
+
     var message = document.getElementById("resultScore"); // display the game result
 	var playerscore = document.getElementById("playerscore"); // display the game result
 	var computerscore = document.getElementById("computerscore"); // display the game result
 	var mygame = document.getElementById("button");
 	var myreset = document.getElementById("reset");
+  
 
 	var totalcomputerscore = document.getElementById("OutputComputerScore"); // display the game result
 	var totalplayerscore = document.getElementById("OutputPlayerScore"); // display the game result
@@ -25,8 +31,9 @@ newplayername();
 	var d3 = document.getElementById("die3");
 	var d4 = document.getElementById("die4");
 
-		var finalComputerScore = 0;
-		var finalHumanScore = 0;
+	var finalComputerScore = 0;
+	var finalHumanScore = 0;
+
 
 	//DICES & PLAYER CLASS:
 	
@@ -123,17 +130,35 @@ newplayername();
 			
 			
 				}
+		
+		 localStorage.setItem("finalComputers", finalComputerScore);
+	  var getComputer = localStorage.getItem('finalComputers');
+	  totalcomputerscore.innerHTML = 'Computer: ' + getComputer;
+		
+		
+	  localStorage.setItem("storeHuman", finalHumanScore);
+	  var getHuman = localStorage.getItem('storeHuman');
+	  totalplayerscore.innerHTML = 'Human: ' + getHuman;
 
-		   totalcomputerscore.innerHTML = 'Computer: ' + finalComputerScore;
-		   totalplayerscore.innerHTML = 'Human: ' + finalHumanScore;
 		
 			}
 
 
 
+function reset(){
+	'use strict';	
+	localStorage.removeItem("name");
+	localStorage.clear();
+	window.location.reload();
+	greet();
 
+}
+
+
+greet();
 play(); //PLAY ON LOAD
 mygame.addEventListener('click', play); //PLAY ON CLICK
+myreset.addEventListener('click',reset); //PLAY ON CLICK
 
 
 
