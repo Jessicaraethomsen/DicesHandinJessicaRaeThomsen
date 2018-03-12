@@ -1,15 +1,14 @@
  
-
-
-
+  //Global Variables
     var message = document.getElementById("resultScore"); // display the game result
 	var playerscore = document.getElementById("playerscore"); // display the game result
 	var computerscore = document.getElementById("computerscore"); // display the game result
 	var mygame = document.getElementById("button");
 	var myreset = document.getElementById("reset");
 
-    var finalComputerScore = 0;
-    var finalHumanScore = 0;
+    var finalComputerScore, finalHumanScore;
+	//var finalComputerScore = 0;  //Variables don't need to be filled
+   // var finalHumanScore= 0;// was a huge problem with local storage..
 
 	
 	var totalcomputerscore = document.getElementById("OutputComputerScore"); // display the game result
@@ -21,11 +20,14 @@
 	var d4 = document.getElementById("die4");
 
 
+
+
+
 function greet(){
 	'use strict';
     var name = localStorage.getItem("name");
     if (name === null || name === "null"){
-     alert("READY FOR A NEW GAME!!!");
+     alert("READY FOR A NEW GAME!!!");  //some feedback for the player
      name = prompt("What is your name?", '');
       localStorage.setItem("name", name);
       alert("Thanks, "+ name + "...Click Okay to ROLL!!!");
@@ -36,32 +38,34 @@ function greet(){
   } // end function  
 
 
+// 
 
-/*
-Here was my attempt to make a function to save the score.  I believe my issue is the global variable refreshes it to 0 each time not allowing me 
-to output the right data from the stored*/
-/*function storedata(){
-	'use strict';
-	console.log('test1:'+finalHumanScore);
+if (localStorage.getItem('player')===null){
+	
+	localStorage.setItem('player', 0);
+	finalHumanScore = parseInt(localStorage.getItem('player'));
+	document.getElementById('OutputPlayerScore').innerHTML = 'Player: ' + finalHumanScore;
+} else{
 
-    var playerset = localStorage.getItem('playerset');
-    if (playerset === null || playerset === "null"){
+    finalHumanScore = parseInt(localStorage.getItem('player'));
+	document.getElementById('OutputPlayerScore').innerHTML = 'Player: '+ finalHumanScore;
+}
 
-     playerset = finalHumanScore;
-      localStorage.setItem("playerset", finalHumanScore);
-				console.log('test2:'+ playerset);
 
-    } else {
-	document.getElementById("OutputPlayerScore").innerHTML =  playerset;
-	console.log('test3s:'+playerset);
 
-		
-    } // end greet
-  } // end function  
+if (localStorage.getItem('computer')===null){
+	
+	localStorage.setItem('computer', 0);
+	finalComputerScore = parseInt(localStorage.getItem('computer'));
+	document.getElementById('OutputComputerScore').innerHTML ='Computer: ' + finalComputerScore;
+} else{
 
-*/
+    finalComputerScore = parseInt(localStorage.getItem('computer'));
+	document.getElementById('OutputComputerScore').innerHTML = 'Computer: ' + finalComputerScore;
+}
 
-   
+
+
 
 	//DICES & PLAYER CLASS:
 	
@@ -152,31 +156,30 @@ to output the right data from the stored*/
 		 } else if(Human.score < Computer.score){
 		 message.innerHTML = "<span style='color:#Ea4977'> YOU SADLY LOST </span>";
 		finalComputerScore++; //ADD THE SCOREUP
+			 		totalcomputerscore.innerHTML = "Computer:  " + finalComputerScore;
+
+		localStorage.setItem('computer', finalComputerScore);
+
 			 //console.log("test2")
 		 
 		} else if(Human.score > Computer.score){
         message.innerHTML = "<span style='color:#0BB56E'> YOUR A WINNER, BABY </span>";
 		finalHumanScore++; //ADD THE SCOREUP
+				    totalplayerscore.innerHTML = "Player:  " + finalHumanScore;
+
+		localStorage.setItem('player', finalHumanScore); // REMEMBER TO ADD LOCAL STORAGE HERE
 
 
 				}
-
-		totalcomputerscore.innerHTML = "Computer:  " + finalComputerScore;
-	    totalplayerscore.innerHTML = "player:  " + finalHumanScore;
-		
-		//storedata();
-
 
 			}
 
 
 
-
-
-
+//reset function... clears the local storage, then runs the greet, and play function
 function reset(){
-	'use strict';	
-	localStorage.removeItem("name");
+	'use strict';
+
 	localStorage.clear();
 	window.location.reload();
 	greet();
@@ -187,10 +190,8 @@ function reset(){
 
 
 myreset.addEventListener('click',reset); //PLAY ON CLICK
-greet();
 mygame.addEventListener('click', play); //PLAY ON CLICK
-//storedata();
-
+greet(); //use the prompt to get a name.
 play(); //PLAY ON LOAD
 
 
