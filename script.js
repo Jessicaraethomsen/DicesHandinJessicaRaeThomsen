@@ -1,4 +1,4 @@
- //Global Variables
+ //Global Variables... 
  var message = document.getElementById("resultScore"); // display the game result
  var playerscore = document.getElementById("playerscore"); // display the game result
  var computerscore = document.getElementById("computerscore"); // display the game result
